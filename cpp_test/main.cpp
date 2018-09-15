@@ -1,15 +1,18 @@
-//
-//  main.cpp
-//  cpp_test
-//
-//  Created by Niklas on 15.09.18.
-//  Copyright © 2018 Niklas. All rights reserved.
-//
-
 #include <iostream>
+#include <vector>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main()
+{
+    std::vector<std::vector<double>> matrice { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+    
+    std::cout << "Bonjour, voici une matrice:" << std::endl;
+    for (auto element : matrice) {
+        for (auto val : element) {
+            std::cout << val << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    
     return 0;
 }
