@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  s
+//  hello_world
 //
 //  Created by Niklas on 15.09.18.
 //  Copyright © 2018 Niklas. All rights reserved.
