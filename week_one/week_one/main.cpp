@@ -8,8 +8,20 @@
 
 #include <iostream>
 
+using namespace std;
+
+void age() {
+    const int CURRENT_YEAR(2018);
+    
+    cout << "How old are you?" << endl;
+    
+    int age;
+    cin >> age;
+    
+    cout << "You're birth year is: " << CURRENT_YEAR - age << endl;
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    age();
     return 0;
 }
