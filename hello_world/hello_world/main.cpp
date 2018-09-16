@@ -38,5 +38,16 @@ int main(int argc, const char * argv[]) {
     
     cout << "a is: " << a << endl;
     
+    cout << "enter a value for n: " << endl;
+    
+    //    initialise var n;
+    int n;
+    //    store the result of cin in n, >> is input operator
+    //    the bitwise operator >> has been given a new meaning as it's being used in conjunction with cin (like the output operator << with cout).
+    //    this is called operator overloading.
+    cin >> n;
+    
+    cout << "n is: " << n << endl;
+    
     return 0;
 }
