@@ -51,7 +51,7 @@ void math_it_up() {
     
     x = 2;
     y = 4;
-    
+
     a = x + y;
     b = x - y;
     c = x * y;
