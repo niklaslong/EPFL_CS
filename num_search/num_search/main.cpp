@@ -16,8 +16,7 @@ int main(int argc, const char * argv[]) {
     cout << "choose a number greater than 2" << endl;
     
     int max(20);
-    int min(1);
-    int num(19);
+    int num(17);
     int guess;
     
     cout << "guessing" << endl;
@@ -31,7 +30,7 @@ int main(int argc, const char * argv[]) {
             max = guess;
             guess /= 2;
         } else {
-            guess = max - (guess / 2);
+            guess = max - ((max - guess) / 2);
         }
     }
     
