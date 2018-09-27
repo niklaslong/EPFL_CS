@@ -63,10 +63,15 @@ void math_it_up() {
     cout << "x / y = " << d << endl;
 }
 
+void budget() {
+    cout << "yay";
+}
+
 int main(int argc, const char * argv[]) {
-    age();
-    fondue();
-    math_it_up();
+//    age();
+//    fondue();
+//    math_it_up();
+    budget();
     
     return 0;
 }

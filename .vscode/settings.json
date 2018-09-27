@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "*.erb": [
+      "erb",
+      "html",
+      "ruby"
+    ],
+    "*.hbs": [
+      "handlebars",
+      "html"
+    ],
+    "*.vue": [
+      "vue",
+      "html"
+    ],
+    "iosfwd": "cpp"
+  }
+}
