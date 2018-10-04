@@ -29,7 +29,7 @@ int integer_test() {
     return 0;
 }
 
-int interval() {
+int simple_interval() {
     cout << "enter a real number" << endl;
     double x;
     cin >> x;
@@ -42,9 +42,24 @@ int interval() {
     return 0;
 }
 
+int complex_interval() {
+    cout << "enter a real number" << endl;
+    double x;
+    cin >> x;
+    
+    if ((x < 3 && x >= 2) || (x <= 1 && x > 00) || (x <= -2 && x >= -10)) {
+        cout << "your number belongs to I";
+    } else {
+        cout << "your number doesn't belong to I";
+    }
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    integer_test();
-    interval();
+//    simple_interval();
+    complex_interval();
     
     return 0;
 }
