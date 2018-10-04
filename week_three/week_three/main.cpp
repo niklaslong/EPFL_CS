@@ -15,7 +15,9 @@ int integer_test() {
     int n;
     cin >> n;
     
-    if (n > 0 && n % 2 == 0) {
+    if (n == 0) {
+         cout << "number 0 and is even";
+    } else if (n > 0 && n % 2 == 0) {
         cout << "number is positive and even";
     } else if (n < 0 && n % 2 == 0) {
         cout << "number is negative and even";
@@ -27,8 +29,22 @@ int integer_test() {
     return 0;
 }
 
+int interval() {
+    cout << "enter a real number" << endl;
+    double x;
+    cin >> x;
+    
+    if (x < 1 && x >= -1) {
+        cout << "your number belongs to I [-1; 1[";
+    } else {
+        cout << "your number doesn't belong to I [-1; 1[";
+    }
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
-    integer_test();
+//    integer_test();
+    interval();
     
     return 0;
 }
