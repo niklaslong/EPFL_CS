@@ -68,10 +68,9 @@ void budget() {
 }
 
 int main(int argc, const char * argv[]) {
-//    age();
-//    fondue();
-//    math_it_up();
-    budget();
+    age();
+    fondue();
+    math_it_up();
     
     return 0;
 }
