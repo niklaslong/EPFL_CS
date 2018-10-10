@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -20,7 +21,47 @@ int tables() {
     return 0;
 }
 
+int rebounds() {
+    constexpr double G(9.81);
+    
+    double h(-1);
+    double eps(-1);
+    
+    int nbr(-1);
+    
+    while (h <= 0) {
+        cout << "enter h." << endl;
+        cin >> h;
+    }
+    
+    while (nbr <= 0) {
+        cout << "enter nbr." << endl;
+        cin >> nbr;
+    }
+    
+    while (eps < 0 || eps > 1) {
+        cout << "enter eps." << endl;
+        cin >> eps;
+    }
+    
+//    Mathyness starts here!
+    
+    double v;
+    double v1;
+    
+    for (int i(nbr); i > 0; --i) {
+        v = sqrt(2 * h * G);
+        v1 = eps * v;
+        h = (pow(v1, 2) / (2 * G));
+    }
+
+    cout << "h: " << h << endl;
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
-    tables();
+//    tables();
+    rebounds();
     return 0;
 }
