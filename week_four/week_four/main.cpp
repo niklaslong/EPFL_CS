@@ -190,14 +190,39 @@ int primes() {
     return 0;
 }
 
+int loan() {
+    cout << "Enter sum, monthly paiment and interest" << endl;
+    
+    double sum, paiment, interest_rate;
+    
+    cin >> sum >> paiment >> interest_rate;
+    
+    double interest_amount(0);
+    int count(0);
+    
+    while (sum > 0) {
+        double monthly_interest = interest_rate * sum;
+        sum -= (paiment + monthly_interest);
+        interest_amount += monthly_interest;
+        
+        ++count;
+    }
+    
+    cout << "total interest: " << interest_amount << endl;
+    cout << "months: " << count;
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    tables();
 //    rebounds();
 //    pyramid();
 //    tree();
 //    while_rebounds();
+//    primes();
     
-    primes();
+    loan();
     
     return 0;
 }
