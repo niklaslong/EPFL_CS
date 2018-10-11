@@ -214,6 +214,25 @@ int loan() {
     return 0;
 }
 
+int sequence_and_series() {
+    double u(1);
+    int n(10);
+    
+    double series(1);
+    
+    cout << "u0" << " is: " << u << endl;
+    
+    for (int i(0); i <= n; i++) {
+        u = u / (i + 1);
+        cout << "u" << i + 1 << " is: " << u << endl;
+        
+        series += u;
+        cout << "series is: " << series << endl;
+    }
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    tables();
 //    rebounds();
@@ -221,8 +240,9 @@ int main(int argc, const char * argv[]) {
 //    tree();
 //    while_rebounds();
 //    primes();
+//    loan();
     
-    loan();
+    sequence_and_series();
     
     return 0;
 }
