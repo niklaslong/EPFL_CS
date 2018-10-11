@@ -60,8 +60,33 @@ int rebounds() {
     return 0;
 }
 
+string add_whitespace(int n) {
+    if (n == 1) {return "";}
+    
+    return " " + add_whitespace(--n);
+}
+
+int pyramid() {
+    int line(1);
+    
+    for (int i(1); i < 10; ++i) {
+        cout << add_whitespace(10 - line);
+        
+        for (int j(1); j <= line; ++j) {
+            cout << j;
+        }
+        cout << endl;
+        ++line;
+    }
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    tables();
-    rebounds();
+//    rebounds();
+    pyramid();
+    
+    
     return 0;
 }
