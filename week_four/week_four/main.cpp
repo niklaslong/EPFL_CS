@@ -21,6 +21,8 @@ int tables() {
     return 0;
 }
 
+//REBOUNDS
+
 int rebounds() {
     constexpr double G(9.81);
     
@@ -59,6 +61,52 @@ int rebounds() {
     
     return 0;
 }
+
+
+int while_rebounds() {
+    constexpr double G(9.81);
+    
+    double h(-1);
+    double eps(-1);
+    
+    int final_h(-1);
+    
+    while (h <= 0) {
+        cout << "enter h." << endl;
+        cin >> h;
+    }
+    
+    while (final_h <= 0) {
+        cout << "enter final h." << endl;
+        cin >> final_h;
+    }
+    
+    while (eps < 0 || eps > 1) {
+        cout << "enter eps." << endl;
+        cin >> eps;
+    }
+    
+    //    Mathyness starts here!
+    
+    double v;
+    double v1;
+    
+    int bounces(0);
+    
+    do {
+        v = sqrt(2 * h * G);
+        v1 = eps * v;
+        h = (pow(v1, 2) / (2 * G));
+        
+        ++bounces;
+    } while (h > final_h);
+    
+    cout << "bounces: " << bounces << endl;
+    
+    return 0;
+}
+
+//PYRAMID AND STARS
 
 string add_stars(int n) {
     if (n == 1) {return "*";}
@@ -121,6 +169,7 @@ int main(int argc, const char * argv[]) {
 //    rebounds();
 //    pyramid();
 //    tree();
+    while_rebounds();
     
     
     return 0;
