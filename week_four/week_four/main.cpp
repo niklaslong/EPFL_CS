@@ -60,8 +60,14 @@ int rebounds() {
     return 0;
 }
 
+string add_stars(int n) {
+    if (n == 1) {return "*";}
+    
+    return "*" + add_stars(--n);
+}
+
 string add_whitespace(int n) {
-    if (n == 1) {return "";}
+    if (n == 0) {return "";}
     
     return " " + add_whitespace(--n);
 }
@@ -70,7 +76,7 @@ int pyramid() {
     int line(1);
     
     for (int i(1); i < 10; ++i) {
-        cout << add_whitespace(10 - line);
+        cout << add_whitespace(9 - line);
         
         for (int j(1); j <= line; ++j) {
             cout << j;
@@ -82,10 +88,39 @@ int pyramid() {
     return 0;
 }
 
+string create_tree(int lines, int num_stars, int chars_per_line) {
+    if (lines == 0) {return "";}
+    
+    int whitespace = (chars_per_line - num_stars) / 2;
+    
+    string stars = add_stars(num_stars);
+    string pre_whitespace = add_whitespace(whitespace);
+    string aft_whitespace = add_whitespace(whitespace);
+    
+    string line = pre_whitespace + stars + aft_whitespace + "\n";
+    
+    return line + create_tree(--lines, num_stars += 2, chars_per_line);
+}
+
+int tree() {
+    int lines;
+    
+    cout << "enter lines" << endl;
+    cin >> lines;
+    
+    int chars_per_line(1 + ((lines - 1) * 2));
+    
+    string tree = create_tree(lines, 1, chars_per_line);
+    cout << tree;
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    tables();
 //    rebounds();
-    pyramid();
+//    pyramid();
+//    tree();
     
     
     return 0;
