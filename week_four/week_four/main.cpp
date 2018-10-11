@@ -181,7 +181,11 @@ int primes() {
         --divisor;
     }
     
-    cout << boolalpha << "is it prime? - " << is_prime << endl;
+    cout << boolalpha << "Is it prime? – " << is_prime;
+    
+    if (!is_prime) {
+        cout << " because it is divisible by: " << ++divisor << endl;
+    }
     
     return 0;
 }
