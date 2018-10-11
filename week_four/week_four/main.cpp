@@ -106,7 +106,7 @@ int while_rebounds() {
     return 0;
 }
 
-//PYRAMID AND STARS
+//PYRAMID AND TREE
 
 string add_stars(int n) {
     if (n == 1) {return "*";}
@@ -164,13 +164,36 @@ int tree() {
     return 0;
 }
 
+int primes() {
+    int n;
+    
+    cout << "enter an integer" << endl;
+    cin >> n;
+    
+    bool is_prime(true);
+    int divisor(n - 1);
+    
+    while (is_prime && divisor > 1) {
+        if (n % divisor == 0) {
+            is_prime = false;
+        }
+        
+        --divisor;
+    }
+    
+    cout << boolalpha << "is it prime? - " << is_prime << endl;
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
 //    tables();
 //    rebounds();
 //    pyramid();
 //    tree();
-    while_rebounds();
+//    while_rebounds();
     
+    primes();
     
     return 0;
 }
