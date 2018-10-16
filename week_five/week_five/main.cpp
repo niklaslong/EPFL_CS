@@ -13,14 +13,23 @@ using namespace std;
 int variable(10);
 
 int scope();
+
 int query_num(int min, int max);
 int display_num();
 bool validate_input(int min, int max, int num_input);
 
+double min2(double x, double y);
+double min3(double x, double y, double z);
+
+
+
 int main(int argc, const char * argv[]) {
 //    scope();
-    display_num();
+//    display_num();
     
+    cout << "The smallest is: " << min2(5, 7) << endl;
+    cout << "The smallest is: " << min3(5, 1, 2) << endl;
+
     return 0;
 }
 
@@ -93,4 +102,12 @@ int display_num() {
     cout << "Your num was: " << num;
     
     return 0;
+}
+
+double min2(double x, double y) {
+    return (x < y) ? x : y;
+}
+
+double min3(double x, double y, double z) {
+    return min2(min2(x, y), z);
 }
