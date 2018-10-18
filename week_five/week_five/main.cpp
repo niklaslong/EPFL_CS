@@ -23,6 +23,13 @@ double min3(double x, double y, double z);
 
 int exchange(int &x, int &y);
 
+void stars(int nb_stars);
+void spaces(int nb_spaces);
+
+int cluster(int lines);
+int tree(int lines);
+int print_line(int chars_per_line);
+
 
 
 int main(int argc, const char * argv[]) {
@@ -41,7 +48,10 @@ int main(int argc, const char * argv[]) {
 //    exchange(i,j);
 //    cout << "Après: i=" << i << " et j=" << j << endl;
     
-//    
+//    STARS
+    
+    tree(10);
+    
 
     return 0;
 }
@@ -131,6 +141,61 @@ int exchange(int &x, int &y) {
     
     x = y;
     y = tmp;
+    
+    return 0;
+}
+
+void stars(int nb_stars) {
+    for(int i(0); i < nb_stars; ++i) {
+        cout << '*';
+    }
+}
+
+void spaces(int nb_spaces) {
+    for(int i(0); i < nb_spaces; ++i) {
+        cout << ' ';
+    }
+}
+
+int chars_per_line(int line) {
+    return 1 + 2 * (line - 1);
+}
+
+int print_line(int line, int chars_per_line) {
+    //    scope resolution operator used to distinguish function in global scope and local var of same name;
+    int nb_stars = ::chars_per_line(line);
+    int nb_spaces = (chars_per_line - nb_stars) / 2;
+    
+    spaces(nb_spaces);
+    stars(nb_stars);
+    
+    cout << endl;
+    
+    return 0;
+}
+
+int cluster(int lines, int chars_per_line, int offset) {
+        for (int i(1); i <= 4; ++i) {
+            print_line(i + offset, chars_per_line);
+        }
+
+    return lines;
+}
+
+int tree(int lines) {
+    int chars_per_line = ::chars_per_line(lines);
+    int lines_printed(0);
+    int offset(0);
+    
+    for (int i(1); lines_printed < lines; ++i) {
+        lines_printed += cluster(i + 2, chars_per_line, offset);
+        
+        offset += 2;
+    }
+    
+    int nb_spaces = (chars_per_line - 3) / 2;
+    spaces(nb_spaces);
+    cout << "|||" << endl;
     
     return 0;
 }
