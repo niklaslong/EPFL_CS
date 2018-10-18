@@ -62,7 +62,7 @@ int main(int argc, const char * argv[]) {
     
 //    euclidian_div(654321, 210);
     
-//    cosine(M_PI / 3, 100); 
+//    cosine(M_PI / 3, 100);
 
     return 0;
 }
@@ -257,6 +257,7 @@ int cosine(double x, int N) {
     
     double partial_sum = ::partial_sum(x, N);
     
+    cout.precision(12);
     cout << "partial_sum is: " << partial_sum << endl;
     
     return 0;
