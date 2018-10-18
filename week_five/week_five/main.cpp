@@ -30,6 +30,8 @@ int cluster(int lines);
 int tree(int lines);
 int print_line(int chars_per_line);
 
+int euclidian_div(int a, int b);
+
 
 
 int main(int argc, const char * argv[]) {
@@ -50,8 +52,10 @@ int main(int argc, const char * argv[]) {
     
 //    STARS
     
-    tree(10);
+//    tree(10);
     
+    
+    euclidian_div(654321, 210);
 
     return 0;
 }
@@ -196,6 +200,48 @@ int tree(int lines) {
     int nb_spaces = (chars_per_line - 3) / 2;
     spaces(nb_spaces);
     cout << "|||" << endl;
+    
+    return 0;
+}
+
+int modulo(int a, int b) {
+    return a % b;
+}
+
+int euclidian_div(int a, int b) {
+    int remainder;
+    int division;
+    int pgdc;
+    
+    int u(0);
+    int prev_u(1);
+    int next_u;
+    
+    int v(1);
+    int prev_v(0);
+    int next_v;
+    
+    do {
+        remainder = a % b;
+        division = a / b;
+        pgdc = b;
+        
+        next_u = prev_u - u *(division);
+        prev_u = u;
+        u = next_u;
+        
+        next_v = prev_v - v *(division);
+        prev_v = v;
+        v = next_v;
+        
+        cout << "u: " << u << endl;
+        cout << "v: " << v << endl;
+        
+        a = b;
+        b = remainder;
+    } while(remainder != 0);
+    
+    cout << "PGDC is :" << pgdc << endl;
     
     return 0;
 }
