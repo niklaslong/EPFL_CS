@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -32,6 +33,10 @@ int print_line(int chars_per_line);
 
 int euclidian_div(int a, int b);
 
+int cosine(double x, int N);
+double factorial(int k);
+double partial_sum(double x, int N);
+
 
 
 int main(int argc, const char * argv[]) {
@@ -55,7 +60,9 @@ int main(int argc, const char * argv[]) {
 //    tree(10);
     
     
-    euclidian_div(654321, 210);
+//    euclidian_div(654321, 210);
+    
+//    cosine(M_PI / 3, 100); 
 
     return 0;
 }
@@ -244,4 +251,33 @@ int euclidian_div(int a, int b) {
     cout << "PGDC is :" << pgdc << endl;
     
     return 0;
+}
+
+int cosine(double x, int N) {
+    
+    double partial_sum = ::partial_sum(x, N);
+    
+    cout << "partial_sum is: " << partial_sum << endl;
+    
+    return 0;
+}
+
+double factorial(int k) {
+    double fact(1);
+    
+    for (int i(1); i <= k; ++i) {
+        fact *= i;
+    }
+    
+    return fact;
+}
+
+double partial_sum(double x, int N) {
+    double partial_sum(0.0);
+    
+    for (int i(0); i < N; ++i) {
+        partial_sum += (pow(-1, i) * pow(x, 2*i)) / factorial(2*i);
+    }
+
+    return partial_sum;
 }
