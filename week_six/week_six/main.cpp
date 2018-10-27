@@ -17,13 +17,24 @@ bool prompt_user();
 
 int recursive_fibonacci(int n);
 
+bool not_and(bool a, bool b);
+bool not2(bool a);
+bool and2(bool a, bool b);
+bool or2(bool a, bool b);
+
+
+
 int main(int argc, const char * argv[]) {
 //    while (prompt_user()) {
 //        cout << iterative_factorial(5) << endl;
 //        cout << recursive_factorial(5) << endl;
 //    }
     
-    cout << recursive_fibonacci(7) << endl;
+//    cout << recursive_fibonacci(7) << endl;
+    
+    cout << not2(false) << endl;
+    cout << and2(true, true) << endl;
+    cout << or2(false, false) << endl;
     
     return 0;
 }
@@ -53,4 +64,20 @@ bool prompt_user() {
 
 int recursive_fibonacci(int n) {
     return (n < 2) ? n : recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2);
+}
+
+bool not_and(bool a, bool b) {
+    return not(a and b);
+}
+
+bool not2(bool a) {
+    return not_and(a, true);
+}
+
+bool and2(bool a, bool b) {
+    return not2(not_and(a, b));
+}
+
+bool or2(bool a, bool b) {
+    return not2(and2(not2(a), not2(b)));
 }
