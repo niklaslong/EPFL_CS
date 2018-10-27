@@ -12,13 +12,18 @@ using namespace std;
 
 int iterative_factorial(int n);
 int recursive_factorial(int n);
+
 bool prompt_user();
 
+int recursive_fibonacci(int n);
+
 int main(int argc, const char * argv[]) {
-    while (prompt_user()) {
-        cout << iterative_factorial(5) << endl;
-        cout << recursive_factorial(5) << endl;
-    }
+//    while (prompt_user()) {
+//        cout << iterative_factorial(5) << endl;
+//        cout << recursive_factorial(5) << endl;
+//    }
+    
+    cout << recursive_fibonacci(7) << endl;
     
     return 0;
 }
@@ -44,4 +49,8 @@ bool prompt_user() {
     cin >> response;
     
     return (response == "y") ? true : false;
+}
+
+int recursive_fibonacci(int n) {
+    return (n < 2) ? n : recursive_fibonacci(n - 1) + recursive_fibonacci(n - 2);
 }
