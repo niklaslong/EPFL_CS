@@ -20,12 +20,21 @@ double cholest_moyen(const Souris& s);
 void afficher(const Souris& s);
 bool en_danger(const Souris& s, double seuil);
 
+double ratio_en_danger(const Elevage& e, double s);
+double cholest_min(const Elevage& e);
+void afficher(const Elevage& e);
+
+void ajouter_souris(Elevage &e, Souris s);
+
+Elevage attenuer_mesures(const Elevage& e, double ratio);
+
+int premiere_saine(const Elevage& e, double s);
+
 
 // FONCTION UTILITAIRE FOURNIE
 // A DECOMMENTER POUR TEST 2
 void population_a_risque(const Elevage& elevage, double seuil)
 {
-    /*
      cout << "Pourcentage de souris en danger avec le seuil critique a "
      << seuil << " : "<< flush;
      
@@ -35,7 +44,6 @@ void population_a_risque(const Elevage& elevage, double seuil)
      // cout << pourcent_en_danger(elevage, seuil) * 100.0  << flush;
      cout << ratio_en_danger(elevage, seuil) * 100.0  << flush;
      cout << "%" << endl;
-     */
 }
 
 // FONCTION UTILITAIRE FOURNIE
@@ -66,7 +74,7 @@ int main()
     
     
     // TEST 2
-    /*
+    
      cout << "Test 2: " << endl;
      Elevage elevage = { {0.5 , 0.75, 1},
      {1.5 , 1.25, 1.75},
@@ -84,10 +92,9 @@ int main()
      
      cout << endl;
      // FIN TEST 2
-     */
     
     // TEST 4
-    /*
+
      cout << "Test 4: " << endl;
      Elevage nouvel_elevage;
      double seuil(1.0);
@@ -106,10 +113,8 @@ int main()
      
      cout << endl;
      // FIN TEST 4
-     */
     
     // TEST 5
-    /*
      cout << "Test 5: " << endl;
      afficher(elevage);
      seuil = 1;
@@ -121,10 +126,9 @@ int main()
      cout << premiere_saine(elevage, seuil) << endl;
      
      // FIN TEST 5
-     */
     
     // TEST 3
-    /*
+
      cout << "Test 3: " << endl;
      ajouter_souris(elevage, souris);
      afficher(elevage);
@@ -132,7 +136,6 @@ int main()
      population_a_risque(elevage, 1.5);
      population_a_risque(elevage, 2);
      //FIN TEST 3
-     */
     
     return 0;
     
@@ -148,7 +151,7 @@ double cholest_moyen(const Souris& s) {
         average += measurement;
     }
     
-    average /= s.size(); 
+    average /= s.size();
     
     return average;
 }
@@ -164,4 +167,60 @@ void afficher(const Souris& s) {
 bool en_danger(const Souris& s, double seuil) {
     return cholest_moyen(s) >= seuil ? true : false;
 }
+
+double ratio_en_danger(const Elevage& e, double s) {
+    double endangered_mice(0);
+    
+    for (auto mouse : e) {
+        if (en_danger(mouse, s)) {endangered_mice += 1;}
+    }
+    
+    double ratio = endangered_mice / e.size();
+    
+    return ratio;
+}
+
+double cholest_min(const Elevage& e) {
+    double min_cholest(100);
+    
+    for (auto mouse : e) {
+        for (auto measurement : mouse) {
+            if (measurement < min_cholest) {min_cholest = measurement;}
+        }
+    }
+    
+    return min_cholest;
+}
+
+void afficher(const Elevage& e) {
+    for (size_t i(0); i < e.size(); i++) {
+        cout << "Specimen " << i + 1 << " : ";
+        afficher(e[i]);
+    }
+}
+
+void ajouter_souris(Elevage &e, Souris s) {
+    e.push_back(s);
+}
+
+Elevage attenuer_mesures(const Elevage& e, double ratio) {
+    Elevage new_e(e);
+    
+    for (auto &mouse : new_e) {
+        for (auto &measurement : mouse) {
+            measurement = measurement * (1 - ratio);
+        }
+    }
+    
+    return new_e;
+}
+
+int premiere_saine(const Elevage& e, double s) {
+    for (size_t i(0); i < e.size();  i++) {
+        if (!en_danger(e[i], s)) {return i;}
+    }
+    
+    return -1;
+}
+
 
