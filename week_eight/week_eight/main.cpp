@@ -10,15 +10,16 @@
 #include <array>
 #include <vector>
 #include <string>
+#include <sstream>
 
 void generate_letter(bool sex, std::string receptor, std::string subject, std::string date, std::string signoff, std::string author);
-std::string split(std::string string);
+
+int split(std::string string);
 bool next_token(const std::string &str, int from, int len);
 
 int main(int argc, const char * argv[]) {
     // generate_letter(true, "John", "votre demande de rdv" , "12/12", "best", "ME");
-    
-    next_token("hello world this is a string", -1, -1);
+    split("hello world this is a string");
     return 0;
 }
 
@@ -32,8 +33,15 @@ bool next_token(const std::string &str, int from, int len) {
 	return true;
 }
 
-std::string split(std::string string) {
-	return "hello world";
+int split(std::string string) {
+    std::istringstream iss(string);
+    std::vector<std::string> results((std::istream_iterator<std::string>(iss)),
+                                     std::istream_iterator<std::string>());
+    for (auto res : results) {
+        std::cout << res << std::endl;
+    }
+    
+    return 0;
 }
 
 void generate_letter(
