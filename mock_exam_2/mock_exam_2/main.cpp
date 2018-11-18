@@ -25,7 +25,7 @@ double croitre(double particules, double taux);
 double pic(const Individu &individu);
 
 void afficher(const Individu &individu);
-void afficher(const Individus & individus);
+void afficher(const Individus &individus);
 
 Individus trier(Individus &individus, int jour);
 
@@ -96,7 +96,7 @@ Individus trier(Individus &individus, int jour);
  
  cout << endl;
  }
- 
+
 
 
 int main()
