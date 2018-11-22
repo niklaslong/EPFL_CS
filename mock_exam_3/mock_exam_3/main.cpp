@@ -25,6 +25,12 @@ bool purines(char first, char second);
 bool pyramidines(char first, char second);
 int score(char first, char second);
 
+void display(const Sequence &seq);
+int score(const Sequence &seq1, const Sequence seq2);
+
+Sequence best(const Sequence &seq, const vector<Sequence> &set_of_sequences);
+void display_best(const Sequence &seq, const vector<Sequence> &set_of_sequences);
+
 
 // VOUS DECOMMENTEREZ LES FONCTIONS SUIVANTES EN FONCTION DE CE QUE VOUS
 // DEMANDE l'ENONCE
@@ -48,13 +54,13 @@ int score(char first, char second);
  }
  }
  }
- 
+
 
 /* FONCTION UTILITAIRE FOURNIE
  * NE PAS MODIFIER
  * affiche le score de l'alignement de seq1 avec seq2
  */
-/*
+
  void test2(const Sequence& seq1, const Sequence& seq2)
  {
  cout << "L'alignement de ";
@@ -64,7 +70,7 @@ int score(char first, char second);
  cout << " a pour score : " << score(seq1, seq2);
  cout << endl;
  }
- /*
+
  
  /* PROGRAMME PRINCIPAL FOURNI
  NE MODIFIER QUE CONFORMĆ‰MENT A L'Ć‰NONCĆ‰
@@ -83,7 +89,7 @@ int main()
      // FIN TEST 1
     
     
-    /*
+    
      // TEST 2
      cout << "Test de la partie 2: " << endl;
      cout << "-------------------- " << endl;
@@ -113,9 +119,9 @@ int main()
      test2(seq1, seq2);
      
      // FIN TEST 2
-     */
     
-    /*
+    
+    
      // TEST 3
      cout << "Test de la partie 3: " << endl;
      cout << "-------------------- " << endl;
@@ -137,7 +143,7 @@ int main()
      
      
      // FIN TEST 3
-     */
+    
     
     return 0;
     
@@ -173,4 +179,65 @@ int score(char first, char second) {
     } else {
         return -1;
     }
+}
+
+void display(const Sequence &seq) {
+    for (char c : seq) {
+        cout << c;
+    }
+}
+
+size_t shortest_list(const Sequence &seq1, const Sequence &seq2) {
+    size_t s1 = seq1.size();
+    size_t s2 = seq2.size();
+    
+    return s1 < s2 ? s1 : s2;
+}
+
+int score(const Sequence &seq1, const Sequence seq2) {
+    int score(0);
+    
+    for (size_t i(0); i < shortest_list(seq1, seq2); ++i) {
+        score += ::score(seq1[i], seq2[i]);
+    }
+    
+    return score;
+}
+
+Sequence best(const Sequence &seq, const vector<Sequence> &set_of_sequences) {
+    if (set_of_sequences.size() == 0) {
+        Sequence nil_seq;
+        return nil_seq;
+    }
+    
+    int best(-1000);
+    size_t best_index(-1);
+    
+    for (size_t i(0); i < set_of_sequences.size(); ++i) {
+        int score = ::score(seq, set_of_sequences[i]);
+        
+        if (score > best) {
+            best = score;
+            best_index = i;
+        }
+    }
+    
+    
+    return set_of_sequences[best_index];
+}
+
+void display_best(const Sequence &seq, const vector<Sequence> &set_of_sequences) {
+    Sequence best_sequence = best(seq, set_of_sequences);
+    
+    if (best_sequence.size() == 0) {
+        cout << "Aucun alignement optimal!" << endl;
+        return;
+    }
+    
+    int score = ::score(seq, best_sequence);
+    
+    display(best_sequence);
+    cout << " est le meilleur allignement avec ";
+    display(seq);
+    cout << ", score = " << score << endl;
 }
