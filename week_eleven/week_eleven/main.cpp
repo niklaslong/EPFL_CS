@@ -47,6 +47,14 @@ int main(int argc, const char * argv[]) {
     
     int res4 = function_pntr_2(16, 2, divy);
     cout << res4 << endl;
+    
+    int my_int(3);
+    
+    int_func my_lambda = [&my_int](int y, int z) {return my_int + y + z;};
+    
+    cout << my_lambda(4, 5) << endl;
+    
+    cout << function_pntr_2(4, 5, my_lambda) << endl;
 
 
     return 0;
